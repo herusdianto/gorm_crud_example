@@ -7,3 +7,5 @@ import:
 - package: gopkg.in/go-playground/validator.v8
 - package: github.com/google/uuid
   version: v1.1.1
+- package: github.com/jinzhu/inflection
+  version: v1.0.0
