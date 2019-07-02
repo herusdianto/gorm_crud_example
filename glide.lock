@@ -1,0 +1,12 @@
+hash: 751c379b466db5cdf69b34d36fe0d391cd7365b158be826d7b006f8f7050472b
+updated: 2019-07-02T12:49:19.978968468+07:00
+imports:
+- name: github.com/gin-gonic/gin
+  version: b75d67cd51eb53c3c3a2fc406524c940021ffbda
+- name: github.com/google/uuid
+  version: 0cd6bf5da1e1c83f8b45653022c74f71af0538a4
+- name: github.com/jinzhu/gorm
+  version: 836fb2c19d84dac7b0272958dfb9af7cf0d0ade4
+- name: gopkg.in/go-playground/validator.v8
+  version: 5f1438d3fca68893a817e4a66806cea46a9e4ebf
+testImports: []
