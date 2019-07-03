@@ -14,7 +14,7 @@
 
         cd $GOPATH/src/github.com/herusdianto/gorm_crud_example
 
-4. Install dependencies using glide:
+4. Install dependencies using `glide`:
 
         glide install
 
@@ -22,7 +22,7 @@
 
         dbUser, dbPassword, dbName := "root", "root", "gorm_crud_example"
 
-6. Login to MySQL and create the database:
+6. Login to `MySQL` and create the database:
 
         create database gorm_crud_example;
 
