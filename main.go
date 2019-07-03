@@ -3,8 +3,10 @@ package main
 import (
 	"log"
 
+	"github.com/herusdianto/gorm_crud_example/configs"
 	"github.com/herusdianto/gorm_crud_example/database"
 	"github.com/herusdianto/gorm_crud_example/models"
+	"github.com/herusdianto/gorm_crud_example/repositories"
 )
 
 func main() {
@@ -30,4 +32,10 @@ func main() {
 	db.AutoMigrate(&models.Contact{})
 
 	defer db.Close()
+
+	contactRepository := repositories.NewContactRepository(db)
+
+	route := configs.SetupRoutes(contactRepository)
+
+	route.Run(":8000")
 }
