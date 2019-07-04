@@ -30,6 +30,16 @@
 
         go run main.go
 
+## Features
+
+- [x] Create
+- [ ] Read All
+- [ ] Find One By ID
+- [ ] Update
+- [ ] Delete
+- [ ] Pagination
+- [ ] Search
+
 If you want to watch step by step I'm making this, you can watch this [videos](https://www.youtube.com/playlist?list=PLKmlCa2HUPq-K7hIyHGbDoYs6YZBM8yA-).
 
 Support me with subscribe to my [channel](https://www.youtube.com/channel/UCpKERrPCRQBFaTnJu4xWn5A) on youtube, thank you.
