@@ -40,3 +40,15 @@ func FindAllContacts(repository repositories.ContactRepository) dtos.Response {
 
 	return dtos.Response{Success: true, Data: datas}
 }
+
+func FindOneContactById(id string, repository repositories.ContactRepository) dtos.Response {
+	operationResult := repository.FindOneById(id)
+
+	if operationResult.Error != nil {
+		return dtos.Response{Success: false, Message: operationResult.Error.Error()}
+	}
+
+	var data = operationResult.Result.(*models.Contact)
+
+	return dtos.Response{Success: true, Data: data}
+}
