@@ -33,8 +33,8 @@
 ## Features
 
 - [x] Create
-- [ ] Read All
-- [ ] Find One By ID
+- [x] Read All
+- [x] Find One By ID
 - [ ] Update
 - [ ] Delete
 - [ ] Pagination
