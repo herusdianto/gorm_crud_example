@@ -46,3 +46,13 @@ func (r *ContactRepository) FindOneById(id string) RepositoryResult {
 
 	return RepositoryResult{Result: &contact}
 }
+
+func (r *ContactRepository) DeleteOneById(id string) RepositoryResult {
+	err := r.db.Delete(&models.Contact{ID: id}).Error
+
+	if err != nil {
+		return RepositoryResult{Error: err}
+	}
+
+	return RepositoryResult{Result: nil}
+}

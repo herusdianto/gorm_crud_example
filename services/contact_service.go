@@ -74,3 +74,13 @@ func UpdateContactById(id string, contact *models.Contact, repository repositori
 
 	return dtos.Response{Success: true, Data: operationResult.Result}
 }
+
+func DeleteOneContactById(id string, repository repositories.ContactRepository) dtos.Response {
+	operationResult := repository.DeleteOneById(id)
+
+	if operationResult.Error != nil {
+		return dtos.Response{Success: false, Message: operationResult.Error.Error()}
+	}
+
+	return dtos.Response{Success: true}
+}

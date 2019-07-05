@@ -36,8 +36,9 @@
 - [x] Create Data
 - [x] Read All Data
 - [x] Find One Data By ID
-- [ ] Update Data
-- [ ] Delete Data
+- [x] Update Data
+- [x] Delete One Data ID
+- [ ] Delete Multiple Data By List ID
 - [ ] Data Pagination
 - [ ] Search Data
 
