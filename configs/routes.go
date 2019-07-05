@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/herusdianto/gorm_crud_example/dtos"
 	"github.com/herusdianto/gorm_crud_example/helpers"
 	"github.com/herusdianto/gorm_crud_example/models"
 	"github.com/herusdianto/gorm_crud_example/repositories"
@@ -105,6 +106,39 @@ func SetupRoutes(contactRepository *repositories.ContactRepository) *gin.Engine 
 		code := http.StatusOK
 
 		response := services.DeleteOneContactById(id, *contactRepository)
+
+		if !response.Success {
+			code = http.StatusBadRequest
+		}
+
+		context.JSON(code, response)
+	})
+
+	route.POST("/delete", func(context *gin.Context) {
+		var multiID dtos.MultiID
+
+		err := context.ShouldBindJSON(&multiID)
+
+		// validation errors
+		if err != nil {
+			response := helpers.GenerateValidationResponse(err)
+
+			context.JSON(http.StatusBadRequest, response)
+
+			return
+		}
+
+		if len(multiID.Ids) == 0 {
+			response := dtos.Response{Success: false, Message: "IDs cannot be empty."}
+
+			context.JSON(http.StatusBadRequest, response)
+
+			return
+		}
+
+		code := http.StatusOK
+
+		response := services.DeleteContactByIds(&multiID, *contactRepository)
 
 		if !response.Success {
 			code = http.StatusBadRequest

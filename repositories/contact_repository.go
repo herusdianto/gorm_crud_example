@@ -56,3 +56,13 @@ func (r *ContactRepository) DeleteOneById(id string) RepositoryResult {
 
 	return RepositoryResult{Result: nil}
 }
+
+func (r *ContactRepository) DeleteByIds(ids *[]string) RepositoryResult {
+	err := r.db.Where("ID IN (?)", *ids).Delete(&models.Contacts{}).Error
+
+	if err != nil {
+		return RepositoryResult{Error: err}
+	}
+
+	return RepositoryResult{Result: nil}
+}

@@ -38,7 +38,7 @@
 - [x] Find One Data By ID
 - [x] Update Data
 - [x] Delete One Data By ID
-- [ ] Delete Multiple Data By ID List
+- [x] Delete Multiple Data By IDs
 - [ ] Data Pagination
 - [ ] Search Data
 

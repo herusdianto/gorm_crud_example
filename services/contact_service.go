@@ -84,3 +84,13 @@ func DeleteOneContactById(id string, repository repositories.ContactRepository) 
 
 	return dtos.Response{Success: true}
 }
+
+func DeleteContactByIds(multiId *dtos.MultiID, repository repositories.ContactRepository) dtos.Response {
+	operationResult := repository.DeleteByIds(&multiId.Ids)
+
+	if operationResult.Error != nil {
+		return dtos.Response{Success: false, Message: operationResult.Error.Error()}
+	}
+
+	return dtos.Response{Success: true}
+}
