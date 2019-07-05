@@ -52,3 +52,25 @@ func FindOneContactById(id string, repository repositories.ContactRepository) dt
 
 	return dtos.Response{Success: true, Data: data}
 }
+
+func UpdateContactById(id string, contact *models.Contact, repository repositories.ContactRepository) dtos.Response {
+	existingContactResponse := FindOneContactById(id, repository)
+
+	if !existingContactResponse.Success {
+		return existingContactResponse
+	}
+
+	existingContact := existingContactResponse.Data.(*models.Contact)
+
+	existingContact.Name = contact.Name
+	existingContact.Email = contact.Email
+	existingContact.Address = contact.Address
+
+	operationResult := repository.Save(existingContact)
+
+	if operationResult.Error != nil {
+		return dtos.Response{Success: false, Message: operationResult.Error.Error()}
+	}
+
+	return dtos.Response{Success: true, Data: operationResult.Result}
+}

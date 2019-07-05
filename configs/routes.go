@@ -72,5 +72,32 @@ func SetupRoutes(contactRepository *repositories.ContactRepository) *gin.Engine 
 		context.JSON(code, response)
 	})
 
+	route.PUT("/update/:id", func(context *gin.Context) {
+		id := context.Param("id")
+
+		var contact models.Contact
+
+		err := context.ShouldBindJSON(&contact)
+
+		// validation errors
+		if err != nil {
+			response := helpers.GenerateValidationResponse(err)
+
+			context.JSON(http.StatusBadRequest, response)
+
+			return
+		}
+
+		code := http.StatusOK
+
+		response := services.UpdateContactById(id, &contact, *contactRepository)
+
+		if !response.Success {
+			code = http.StatusBadRequest
+		}
+
+		context.JSON(code, response)
+	})
+
 	return route
 }
