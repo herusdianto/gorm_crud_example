@@ -32,13 +32,14 @@
 
 ## Features
 
-- [x] Create
-- [x] Read All
-- [x] Find One By ID
-- [ ] Update
-- [ ] Delete
-- [ ] Pagination
-- [ ] Search
+- [x] Database Migration
+- [x] Create Data
+- [x] Read All Data
+- [x] Find One Data By ID
+- [ ] Update Data
+- [ ] Delete Data
+- [ ] Data Pagination
+- [ ] Search Data
 
 If you want to watch step by step I'm making this, you can watch this [videos](https://www.youtube.com/playlist?list=PLKmlCa2HUPq-K7hIyHGbDoYs6YZBM8yA-).
 
