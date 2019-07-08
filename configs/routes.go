@@ -147,5 +147,19 @@ func SetupRoutes(contactRepository *repositories.ContactRepository) *gin.Engine 
 		context.JSON(code, response)
 	})
 
+	route.GET("/pagination", func(context *gin.Context) {
+		code := http.StatusOK
+
+		pagination := helpers.GeneratePaginationRequest(context)
+
+		response := services.Pagination(*contactRepository, context, pagination)
+
+		if !response.Success {
+			code = http.StatusBadRequest
+		}
+
+		context.JSON(code, response)
+	})
+
 	return route
 }
