@@ -1,7 +1,9 @@
 package repositories
 
 import (
+	"fmt"
 	"math"
+	"strings"
 
 	"github.com/herusdianto/gorm_crud_example/dtos"
 	"github.com/herusdianto/gorm_crud_example/models"
@@ -78,7 +80,40 @@ func (r *ContactRepository) Pagination(pagination *dtos.Pagination) (RepositoryR
 	offset := pagination.Page * pagination.Limit
 
 	// get data with limit, offset & order
-	errFind := r.db.Limit(pagination.Limit).Offset(offset).Order(pagination.Sort).Find(&contacts).Error
+	find := r.db.Limit(pagination.Limit).Offset(offset).Order(pagination.Sort)
+
+	// generate where query
+	searchs := pagination.Searchs
+
+	if searchs != nil {
+		for _, value := range searchs {
+			column := value.Column
+			action := value.Action
+			query := value.Query
+
+			switch action {
+			case "equals":
+				whereQuery := fmt.Sprintf("%s = ?", column)
+				find = find.Where(whereQuery, query)
+				break
+			case "contains":
+				whereQuery := fmt.Sprintf("%s LIKE ?", column)
+				find = find.Where(whereQuery, "%"+query+"%")
+				break
+			case "in":
+				whereQuery := fmt.Sprintf("%s IN (?)", column)
+				queryArray := strings.Split(query, ",")
+				find = find.Where(whereQuery, queryArray)
+				break
+
+			}
+		}
+	}
+
+	find = find.Find(&contacts)
+
+	// has error find data
+	errFind := find.Error
 
 	if errFind != nil {
 		return RepositoryResult{Error: errFind}, totalPages

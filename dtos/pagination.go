@@ -12,4 +12,5 @@ type Pagination struct {
 	FromRow      int         `json:"from_row"`
 	ToRow        int         `json:"to_row"`
 	Rows         interface{} `json:"rows"`
+	Searchs      []Search    `json:"searchs"`
 }
