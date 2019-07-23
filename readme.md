@@ -40,7 +40,7 @@
 - [x] Delete One Data By ID
 - [x] Delete Multiple Data By IDs
 - [x] Sort & Paginate Data
-- [ ] Search Data
+- [x] Search Data
 
 If you want to watch step by step I'm making this, you can watch this [videos](https://www.youtube.com/playlist?list=PLKmlCa2HUPq-K7hIyHGbDoYs6YZBM8yA-).
 
